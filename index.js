@@ -76,9 +76,9 @@ Channel(app)
 const Music = require('./Routes/Music.route')
 Music(app)
 
-app.get('/', (req, res) => {
+app.get('/dashboard', (req, res) => {
     // res.end('Welcome');
-    res.redirect("dashboard")
+    res.redirect("dashboard.ejs")
 });
 app.get('/dashboard',(req,res)=>{
     res.render('dashboard');
