@@ -6,6 +6,6 @@ module.exports = function (app) {
     .route("/v3/evaluate/average/value/:movie_id")
     .get(Evaluate._getValueAverageMovie);
   app
-    .route("/v3/eval/getToShow/:user_id/:movie_id")
+    .route("/v3/evaluate/getby/:user_id/:movie_id")
     .get(Evaluate._findEvaluateByUserIdAndMovieId);
 };
