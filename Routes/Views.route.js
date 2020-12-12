@@ -2,7 +2,7 @@ module.exports = function (app) {
   const Views = require("../Controllers/Views.controller");
   const Movie = require('../Controllers/Movie.controller')
 
-  app.route("/Dashboard").get(Views._ViewFilm);
+  app.route("/dashboard").get(Views._ViewFilm);
   //app.route("/movie-add").get(Views._AddFilm);
 
   app.route("/movie-edit/:_id").get(Movie._showMovieEdit);
