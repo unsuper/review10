@@ -40,7 +40,7 @@ exports._ViewFilm = async function (req, res) {
   });
 
   if(array.length >= 4) {
-      res.render("dashboard", {data: array})
+      res.render("dashboard.ejs", {data: array})
   }
 
 };
