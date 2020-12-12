@@ -76,15 +76,14 @@ Channel(app)
 const Music = require('./Routes/Music.route')
 Music(app)
 
-// app.get('/', (req, res) => {
-//     // res.end('Welcome');
-//     res.redirect("dashboard")
-// });
-app.get('/dashboard',(req,res)=>{
-    res.render('dashboard');
-
-})
-
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
+
+app.get('/', (req, res) => {
+    res.redirect("dashboard")
+});
+// app.get('/dashboard',(req,res)=>{
+//     res.render('Dashboard');
+
+// })
+
