@@ -88,7 +88,7 @@ exports._findComment = async (req, res) => {
 };
 
 exports._getOne = async (req, res) => {
-  await Comment.find({ user_id: req.params.user_id }, function (err, data) {
+  await Comment.find({ user_id: req.params.user_id, movie_id: req.params.movie_id }, function (err, data) {
     if (err) {
       res.json({
         result: false,

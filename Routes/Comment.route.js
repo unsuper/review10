@@ -3,5 +3,5 @@ module.exports = function (app) {
   app.route("/v1/comment/create").post(Comment._addComment);
   app.route("/v4/comment/update").post(Comment._updateComment);
   app.route("/v3/comment/get/:movie_id").get(Comment._findComment);
-  app.route("/v3/comment/getOne/:user_id").get(Comment._getOne);
+  app.route("/v3/comment/getOne/:user_id/:movie_id").get(Comment._getOne);
 };
