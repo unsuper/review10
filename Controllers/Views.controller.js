@@ -39,9 +39,11 @@ exports._ViewFilm = async function (req, res) {
     }
   });
 
-  if(array.length >= 4) {
-      res.render("Dashboard", {data: array})
-  }
+  // if(array.length >= 4) {
+  //     res.render("Dashboard", {data: array})
+  // }
+
+  res.render("Dashboard", {data: array})
 
 };
 
