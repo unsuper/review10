@@ -71,7 +71,7 @@ exports._addEvaluate = async (req, res) => {
 
 exports._findEvaluateByUserIdAndMovieId = async (req, res) => {
   await Evaluate.findOne(
-    {user_id: req.params.user_id, movie_id: req.params.movie_id },
+    { user_id: req.params.user_id, movie_id: req.params.movie_id },
     function (err, data) {
       if (err) {
         res.json({
@@ -92,25 +92,22 @@ exports._findEvaluateByUserIdAndMovieId = async (req, res) => {
 };
 
 exports._findEvaluate = async (req, res) => {
-  await Evaluate.findOne({ movie_id: req.params.movie_id })
-    .limit(Number.parseInt(req.query.limit))
-    .populate("user_id")
-    .exec(function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          position: 1,
-          message: "get Evaluate fail " + err.message,
-        });
-      } else {
-        res.json({
-          result: true,
-          position: 2,
-          message: "get evaluate ok " + moment().format("YYYY-MM-DD HH:mm"),
-          items: data,
-        });
-      }
-    });
+  await Evaluate.find({ movie_id: req.params.movie_id }, function (err, data) {
+    if (err) {
+      res.json({
+        result: false,
+        position: 1,
+        message: "get Evaluate fail " + err.message,
+      });
+    } else {
+      res.json({
+        result: true,
+        position: 2,
+        message: "get evaluate ok " + moment().format("YYYY-MM-DD HH:mm"),
+        items: data,
+      });
+    }
+  });
 };
 
 exports._getValueAverageMovie = async (req, res) => {

@@ -20,8 +20,8 @@ exports._addComment = async (req, res) => {
           let comment = new Comment({
             movie_id: req.body.movie_id,
             user_id: req.body.user_id,
-            evaluate_id: req.body.movie_id,
-            //evaluate_id: null,
+            //evaluate_id: req.body.movie_id,
+            evaluate_id: null,
             message: req.body.message,
             create_at: moment().format("YYYY-MM-DD HH:mm"),
           });
