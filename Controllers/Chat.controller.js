@@ -1,4 +1,4 @@
-const Chat = require("../Models/Chat");
+const Chat = require("../Models/chat");
 const moment = require("moment");
 
 exports._addChat = async (req, res) => {
