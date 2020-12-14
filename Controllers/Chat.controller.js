@@ -62,8 +62,10 @@ exports._getAll = async (req, res) => {
             user_id: val.user_id,
             gg_name: info.google_name,
             gg_img: info.google_photo,
+            gg_id: info.google_id,
             fb_name: info.facebook_name,
             fb_img: info.facebook_photo,
+            fb_id: info.facebook_id
           },
         });
       });
