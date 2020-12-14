@@ -76,6 +76,10 @@ Channel(app)
 const Music = require('./Routes/Music.route')
 Music(app)
 
+//Chat
+const Chat = require('./Routes/Chat.route')
+Chat(app)
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
