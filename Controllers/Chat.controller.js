@@ -18,27 +18,27 @@ exports._addChat = async (req, res) => {
         message: "check data evaluate fail " + err.message,
       });
     } else {
-        res.json({
-            data: data
-        })
+      res.json({
+        data: data,
+      });
     }
   });
 };
 
 exports._getAll = async (req, res) => {
-    await Chat.find({}, function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          message: "get all chat fail ! " + err.message,
-          items: [],
-        });
-      } else {
-        res.json({
-          result: true,
-          message: "get all chat ok!",
-          items: data,
-        });
-      }
-    });
-  };
+  await Chat.find({}, function (err, data) {
+    if (err) {
+      res.json({
+        result: false,
+        message: "get all chat fail ! " + err.message,
+        items: [],
+      });
+    } else {
+      res.json({
+        result: true,
+        message: "get all chat ok!",
+        items: data,
+      });
+    }
+  });
+};
