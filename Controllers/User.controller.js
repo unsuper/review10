@@ -2,9 +2,55 @@ const Category = require('../Models/Category');
 const Category_Movie = require('../Models/Category_Movie')
 const Video = require('../Models/Video');
 const Movie = require('../Models/Movie')
+const Follow = require('../Models/Follows')
+const Evaluate = require('../Models/Evaluate')
+const Comment = require('../Models/Comment')
 const User = require('../Models/User');
 const moment = require('moment');
 
+
+exports._countComment_eval_follow_byMovieId = async (req, res) => {
+    let countComment = await Comment.find({movie_id: req.params.movie_id}, function(err, data){
+        if(err){
+            res.json({
+                status: false,
+                message: err.message,
+            })
+        }else{
+            return data
+        }
+    })
+
+    let countEval = await Evaluate.find({movie_id: req.params.movie_id}, function(err, data){
+        if(err){
+            res.json({
+                status: false,
+                message: err.message,
+            })
+        }else{
+            return data
+        }
+    })
+
+    let countFollow = await Follow.find({movie_id: req.params.movie_id}, function(err, data){
+        if(err){
+            res.json({
+                status: false,
+                message: err.message,
+            })
+        }else{
+            return data
+        }
+    })
+
+    res.json({
+        status: true,
+        countComment: countComment.length,
+        countEval: countEval.length,
+        countFollow: countFollow.length,
+    })
+
+}
 
 exports._getUser_Id = async (req, res) => {
     let newUser = new User({
