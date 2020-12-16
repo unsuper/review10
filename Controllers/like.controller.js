@@ -18,6 +18,7 @@ exports.like = async (req, res) => {
       } else {
         res.json({
           status: 1,
+          message: "unLiked!"
         });
       }
     });
@@ -35,6 +36,7 @@ exports.like = async (req, res) => {
       } else {
         res.json({
           status: 1,
+          message: 'Like!'
         });
       }
     });
