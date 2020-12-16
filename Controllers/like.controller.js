@@ -58,7 +58,7 @@ exports.isLikeComment = async (req, res) => {
           });
         } else {
           res.json({
-            status: 1,
+            status: data
           });
         }
       }
