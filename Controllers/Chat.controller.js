@@ -1,6 +1,8 @@
 const Chat = require("../Models/chat");
 const User = require("../Models/User");
+const Evaluate = require("../Models/Evaluate");
 const moment = require("moment");
+var clone = require("clone");
 
 exports._addChat = async (req, res) => {
   let chat = new Chat({
@@ -41,8 +43,23 @@ exports._getAll = async (req, res) => {
     }
   );
 
+  let evaluateData = await Evaluate.find(
+    { movie_id: req.params.movie_id },
+    function (err, data) {
+      if (err) {
+        res.json({
+          result: false,
+          message: "get all evalData fail ! " + err.message,
+          items: [],
+        });
+      } else {
+        return data;
+      }
+    }
+  );
+
+  let allData = [];
   await chatData.map((val, ind) => {
-    let allData = [];
     User.find({ _id: val.user_id }, function (err, data) {
       if (err) {
         res.json({
@@ -51,8 +68,23 @@ exports._getAll = async (req, res) => {
           items: [],
         });
       }
-
-      data.map((info, index) => {
+      if (ind === 0) {
+        allData[0] = {
+          chat_id: val._id,
+          content: val.message,
+          create_at: val.create_at,
+          update_at: val.update_at,
+          userinfo: {
+            user_id: val.user_id,
+            gg_name: data[0].google_name,
+            gg_img: data[0].google_photo,
+            gg_id: data[0].google_id,
+            fb_name: data[0].facebook_name,
+            fb_img: data[0].facebook_photo,
+            fb_id: data[0].facebook_id,
+          },
+        };
+      } else {
         allData.push({
           chat_id: val._id,
           content: val.message,
@@ -60,20 +92,21 @@ exports._getAll = async (req, res) => {
           update_at: val.update_at,
           userinfo: {
             user_id: val.user_id,
-            gg_name: info.google_name,
-            gg_img: info.google_photo,
-            gg_id: info.google_id,
-            fb_name: info.facebook_name,
-            fb_img: info.facebook_photo,
-            fb_id: info.facebook_id
+            gg_name: data[0].google_name,
+            gg_img: data[0].google_photo,
+            gg_id: data[0].google_id,
+            fb_name: data[0].facebook_name,
+            fb_img: data[0].facebook_photo,
+            fb_id: data[0].facebook_id,
           },
         });
-      });
+      }
 
       if (ind === chatData.length - 1) {
         res.json({
           status: true,
           data: allData,
+          ratings: evaluateData,
         });
       }
     });
