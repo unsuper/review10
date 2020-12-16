@@ -80,6 +80,10 @@ Music(app)
 const Chat = require('./Routes/Chat.route')
 Chat(app)
 
+//Like
+const Like = require('./Routes/like.route')
+Like(app)
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
