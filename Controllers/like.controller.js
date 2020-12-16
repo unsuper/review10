@@ -48,8 +48,8 @@ exports.like = async (req, res) => {
 };
 
 exports.isLikeComment = async (req, res) => {
-    await Like.countDocuments(
-      { chat_id: req.params.chat_id, user_id: req.params.user_id },
+    await Like.find(
+      { user_id: req.params.user_id },
       function (err, data) {
         if (err) {
           res.json({
@@ -58,7 +58,8 @@ exports.isLikeComment = async (req, res) => {
           });
         } else {
           res.json({
-            status: data
+            status: 1,
+            data: data
           });
         }
       }
