@@ -1,5 +1,6 @@
 const Chat = require("../Models/chat");
 const User = require("../Models/User");
+const Like = require("../Models/like");
 const Evaluate = require("../Models/Evaluate");
 const moment = require("moment");
 var clone = require("clone");
@@ -59,7 +60,30 @@ exports._getAll = async (req, res) => {
   );
 
   let allData = [];
+  let likeData = [];
   await chatData.map((val, ind) => {
+    Like.countDocuments({ chat_id: val._id }, function (err, data) {
+      if (err) {
+        res.json({
+          status: -1,
+          message: err,
+        });
+      }
+      if (data > 0) {
+        if (likeData.length === 0) {
+          likeData[0] = {
+            chat_id: val._id,
+            count: data,
+          };
+        } else {
+          likeData.push({
+            chat_id: val._id,
+            count: data,
+          });
+        }
+      }
+    });
+
     User.find({ _id: val.user_id }, function (err, data) {
       if (err) {
         res.json({
@@ -107,6 +131,7 @@ exports._getAll = async (req, res) => {
           status: true,
           data: allData,
           ratings: evaluateData,
+          countLike: likeData,
         });
       }
     });

@@ -38,7 +38,7 @@ exports.like = async (req, res) => {
       } else {
         res.json({
           status: 1,
-          message: 'Like!',
+          message: "Like!",
           like: true,
           unlike: false,
         });
@@ -51,10 +51,17 @@ exports.countLike = async (req, res) => {
   await Like.countDocuments(
     { chat_id: req.params.chat_id },
     function (err, data) {
-      res.json({
-        status: 1,
-        data: data,
-      });
+      if (err) {
+        res.json({
+          status: -1,
+          message: err,
+        });
+      } else {
+        res.json({
+          status: 1,
+          data: data,
+        });
+      }
     }
   );
 };
