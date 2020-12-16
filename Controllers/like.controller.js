@@ -1,70 +1,70 @@
 const Like = require("../Models/like");
 
 exports.like = async (req, res) => {
-  const query = {
+  let query = {
     user_id: req.body.user_id,
     chat_id: req.body.chat_id,
   };
-
-  const count = await Like.countDocuments(query);
-
-  if (count > 0) {
-    Like.findOneAndDelete(query, function (err, result) {
+  await Like.find(
+    query,
+    function (err, result) {
       if (err) {
         res.json({
-          status: -1,
-          error: err,
-        });
-      } else {
-        res.json({
-          status: 1,
-          message: "unLiked!",
-          like: false,
-          unlike: true,
-        });
-      }
-    });
-  } else {
-    let like = new Like({
-      user_id: req.body.user_id,
-      chat_id: req.body.chat_id,
-    });
-    await like.save(function (err, data) {
-      if (err) {
-        res.json({
-          status: -1,
           message: err,
+          result: result,
         });
       } else {
-        res.json({
-          status: 1,
-          message: "Like!",
-          like: true,
-          unlike: false,
-        });
+        if (result.length === 0) {
+          let like = new Like(query);
+          like.save(function (err, data) {
+            if (err) {
+              res.json({
+                status: -1,
+                message: err,
+              });
+            } else {
+              res.json({
+                status: 1,
+                message: "Like!",
+                result: data,
+              });
+            }
+          });
+        } else {
+          Like.deleteOne(query, function(err, result) {
+            if(err){
+              res.json({
+                status: -1,
+                message: err,
+              })
+            }else{
+              res.json({
+                status: 1,
+                message: "unLike!"
+              })
+            }
+          })
+        }
       }
-    });
-  }
+    }
+  );
 };
 
 exports.isLikeComment = async (req, res) => {
-    await Like.find(
-      { user_id: req.params.user_id },
-      function (err, data) {
-        if (err) {
-          res.json({
-            status: -1,
-            message: err,
-          });
-        } else {
-          res.json({
-            status: 1,
-            data: data
-          });
-        }
-      }
-    );
-  };
+  await Like.find({ user_id: req.params.user_id }, function (err, data) {
+    if (err) {
+      res.json({
+        status: -1,
+        message: err,
+      });
+    } else {
+      res.json({
+        status: 1,
+        data: data,
+      });
+    }
+  });
+};
 
 exports.countLike = async (req, res) => {
   await Like.countDocuments(
