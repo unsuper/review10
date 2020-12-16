@@ -47,6 +47,24 @@ exports.like = async (req, res) => {
   }
 };
 
+exports.isLikeComment = async (req, res) => {
+    await Like.countDocuments(
+      { chat_id: req.params.chat_id, user_id: req.params.user_id },
+      function (err, data) {
+        if (err) {
+          res.json({
+            status: -1,
+            message: err,
+          });
+        } else {
+          res.json({
+            status: 1,
+          });
+        }
+      }
+    );
+  };
+
 exports.countLike = async (req, res) => {
   await Like.countDocuments(
     { chat_id: req.params.chat_id },
