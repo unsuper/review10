@@ -108,11 +108,11 @@ exports._login = async (req, res) => {
               google_token: req.body.google_token,
               google_gmail: req.body.google_gmail,
               google_photo: req.body.google_photo,
-              facebook_id: null,
-              facebook_name: null,
-              facebook_token: null,
-              facebook_gmail: null,
-              facebook_photo: null,
+            //   facebook_id: null,
+            //   facebook_name: null,
+            //   facebook_token: null,
+            //   facebook_gmail: null,
+            //   facebook_photo: null,
             });
             newUser.save(function (err, result) {
               if (err) {
@@ -170,11 +170,11 @@ exports._login = async (req, res) => {
                 facebook_token: req.body.facebook_token,
                 facebook_gmail: req.body.facebook_gmail,
                 facebook_photo: req.body.facebook_photo,
-                google_id: null,
-                google_name: null,
-                google_token: null,
-                google_gmail: null,
-                google_photo: null,
+                // google_id: null,
+                // google_name: null,
+                // google_token: null,
+                // google_gmail: null,
+                // google_photo: null,
               });
               newUser.save(function (err, data) {
                 if (err) {
