@@ -188,7 +188,7 @@ exports._login = async (req, res) => {
                     result: true,
                     message: "create facebook ok",
                     position: 300,
-                    items: data,
+                    items: [data],
                   });
                 }
               });
