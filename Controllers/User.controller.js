@@ -118,7 +118,7 @@ exports._login = async (req, res) => {
               if (err) {
                 res.json({
                   result: false,
-                  message: "create user_id false" + e.message,
+                  message: "create user_id false" + err.message,
                   position: 1100,
                 });
               } else {
