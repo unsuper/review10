@@ -125,7 +125,7 @@ exports._login = async (req, res) => {
                 res.json({
                   result: true,
                   message: "create google ok",
-                  items: result,
+                  items: [result],
                   position: 300,
                 });
               }
