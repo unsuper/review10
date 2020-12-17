@@ -84,7 +84,7 @@ exports._getAll = async (req, res) => {
       }
     });
 
-    User.find({ _id: val.user_id }, function (err, data) {
+    User.findOne({ _id: val.user_id }, function (err, data) {
       if (err) {
         res.json({
           result: false,
