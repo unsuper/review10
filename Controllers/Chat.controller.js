@@ -98,15 +98,8 @@ exports._getAll = async (req, res) => {
           content: val.message,
           create_at: val.create_at,
           update_at: val.update_at,
-          userinfo: {
-            user_id: val.user_id,
-            gg_name: data[0].google_name,
-            gg_img: data[0].google_photo,
-            gg_id: data[0].google_id,
-            fb_name: data[0].facebook_name,
-            fb_img: data[0].facebook_photo,
-            fb_id: data[0].facebook_id,
-          },
+          user_id: val.user_id,
+          userInfo: data,
         };
       } else {
         allData.push({
@@ -114,15 +107,8 @@ exports._getAll = async (req, res) => {
           content: val.message,
           create_at: val.create_at,
           update_at: val.update_at,
-          userinfo: {
-            user_id: val.user_id,
-            gg_name: data[0].google_name,
-            gg_img: data[0].google_photo,
-            gg_id: data[0].google_id,
-            fb_name: data[0].facebook_name,
-            fb_img: data[0].facebook_photo,
-            fb_id: data[0].facebook_id,
-          },
+          user_id: val.user_id,
+          userInfo: data,
         });
       }
 
