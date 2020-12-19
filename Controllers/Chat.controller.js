@@ -30,118 +30,84 @@ exports._addChat = async (req, res) => {
 };
 
 exports._getAll = async (req, res) => {
-  let sort = Number(req.params.sort);
-
-  let evaluateData = await Evaluate.find(
-    { movie_id: req.params.movie_id },
-    function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          message: "get all evalData fail ! " + err.message,
-          items: [],
-        });
-      } else {
-        return data;
-      }
-    }
-  );
-
-  let chatData = await Chat.find(
-    { movie_id: req.params.movie_id },
-    function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          message: "get all chat fail ! " + err.message,
-          items: [],
-        });
-      }
-      return data;
-    }
-  ).sort({ "create_at": sort });
-
   let allData = [];
-  let likeData = [];
-  await chatData.map((val, ind) => {
-    Like.countDocuments({ chat_id: val._id }, function (err, data) {
-      if (err) {
-        res.json({
-          status: -1,
-          message: err,
-        });
-      }
-      if (likeData.length === 0) {
-        likeData[0] = {
-          chat_id: val._id,
-          count: data,
-        };
-      } else {
-        likeData.push({
-          chat_id: val._id,
-          count: data,
-        });
-      }
-    });
+  await Chat.find({ movie_id: req.params.movie_id }, function (err, data) {
+    if (err) {
+      res.json({
+        result: false,
+        message: "get all chat fail ! " + err.message,
+        items: [],
+      });
+    } else {
+      data.map((val, ind) => {
+        Like.countDocuments({ chat_id: val._id }, function (err, count) {
+          if (err) {
+            res.json({
+              status: -1,
+              message: err,
+            });
+          } else {
+            User.findOne({ _id: val.user_id }, function (err, user) {
+              if (err) {
+                res.json({
+                  result: false,
+                  message: "get all chat fail ! " + err.message,
+                  items: [],
+                });
+              } else {
+                Evaluate.findOne(
+                  { user_id: val.user_id, movie_id: req.params.movie_id },
+                  function (err, result) {
+                    if (err) {
+                      res.json({
+                        result: false,
+                        message:
+                          "get eval in get all comment API " + err.message,
+                        items: [],
+                      });
+                    } else {
+                      if (result === null) {
+                        allData.push({
+                          chat_id: val._id,
+                          content: val.message,
+                          create_at: val.create_at,
+                          update_at: val.update_at,
+                          userInfo: user,
+                          sumLike: count,
+                          rating: 0,
+                        });
+                      } else {
+                        allData.push({
+                          chat_id: val._id,
+                          content: val.message,
+                          create_at: val.create_at,
+                          update_at: val.update_at,
+                          userInfo: user,
+                          sumLike: count,
+                          rating: result.score,
+                        });
+                      }
 
-    User.findOne({ _id: val.user_id }, function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          message: "get all chat fail ! " + err.message,
-          items: [],
+                      if (ind === data.length - 1) {
+                        res.json({
+                          status: true,
+                          data: allData,
+                        });
+                      }
+                    }
+                  }
+                );
+              }
+            });
+          }
         });
-      }
-      if (ind === 0) {
-        allData[0] = {
-          chat_id: val._id,
-          content: val.message,
-          create_at: val.create_at,
-          update_at: val.update_at,
-          user_id: val.user_id,
-          userInfo: data,
-        };
-      } else {
-        allData.push({
-          chat_id: val._id,
-          content: val.message,
-          create_at: val.create_at,
-          update_at: val.update_at,
-          user_id: val.user_id,
-          userInfo: data,
-        });
-      }
-
-      if (ind === chatData.length - 1) {
-        res.json({
-          status: true,
-          data: allData,
-          ratings: evaluateData,
-          countLike: likeData,
-        });
-      }
-    });
-  });
+      });
+    }
+  }).sort({ create_at: Number(req.params.sort) });
 };
 
 exports._getAllByLike = async (req, res) => {
   let allData = [];
-  let likeData = [];
-
-  let ratingData = await Evaluate.find(
-    { movie_id: req.params.movie_id },
-    function (err, data) {
-      if (err) {
-        res.json({
-          result: false,
-          message: "get all evalData fail ! " + err.message,
-          items: [],
-        });
-      } else {
-        return data;
-      }
-    }
-  );
 
   await Chat.find({ movie_id: req.params.movie_id }, function (err, data) {
     if (err) {
@@ -159,11 +125,6 @@ exports._getAllByLike = async (req, res) => {
               message: err,
             });
           } else {
-            likeData.push({
-              chat_id: val._id,
-              count: count,
-            });
-
             User.findOne({ _id: val.user_id }, function (err, user) {
               if (err) {
                 res.json({
@@ -172,26 +133,70 @@ exports._getAllByLike = async (req, res) => {
                   items: [],
                 });
               } else {
-                allData.push({
-                  chat_id: val._id,
-                  content: val.message,
-                  create_at: val.create_at,
-                  update_at: val.update_at,
-                  user_id: user._id,
-                  userInfo: user,
-                  sumLike: count,
-                });
-                if (ind === data.length - 1) {
-                  let sortArray = allData.sort(
-                    compareValues("sumLike", "desc")
-                  );
-                  res.json({
-                    status: true,
-                    data: sortArray,
-                    ratings: ratingData,
-                    countLike: likeData,
-                  });
-                }
+                Evaluate.findOne(
+                  { user_id: val.user_id, movie_id: req.params.movie_id },
+                  function (err, result) {
+                    if (err) {
+                      res.json({
+                        result: false,
+                        message:
+                          "get eval in get all comment API " + err.message,
+                        items: [],
+                      });
+                    } else {
+                      if (result === null) {
+                        allData.push({
+                          chat_id: val._id,
+                          content: val.message,
+                          create_at: val.create_at,
+                          update_at: val.update_at,
+                          userInfo: user,
+                          sumLike: count,
+                          rating: 0,
+                        });
+                      } else {
+                        allData.push({
+                          chat_id: val._id,
+                          content: val.message,
+                          create_at: val.create_at,
+                          update_at: val.update_at,
+                          userInfo: user,
+                          sumLike: count,
+                          rating: result.score,
+                        });
+                      }
+
+                      if (ind === data.length - 1) {
+                        let sortArray = allData.sort(
+                          compareValues("sumLike", "desc")
+                        );
+                        res.json({
+                          status: true,
+                          data: sortArray,
+                        });
+                      }
+                    }
+                  }
+                );
+
+                // allData.push({
+                //   chat_id: val._id,
+                //   content: val.message,
+                //   create_at: val.create_at,
+                //   update_at: val.update_at,
+                //   user_id: user._id,
+                //   userInfo: user,
+                //   sumLike: count,
+                // });
+                // if (ind === data.length - 1) {
+                //   let sortArray = allData.sort(
+                //     compareValues("sumLike", "desc")
+                //   );
+                //   res.json({
+                //     status: true,
+                //     data: sortArray,
+                //   });
+                // }
               }
             });
           }
