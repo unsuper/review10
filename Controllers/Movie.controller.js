@@ -240,7 +240,11 @@ exports._getMovie_detail_byID = async (req, res) => {
         message: err
       })
     }else{
-      return result
+      if(result.length === 0){
+        return 0
+      }else{
+        return result;
+      }
     }
   })
 
