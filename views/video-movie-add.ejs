@@ -31,35 +31,34 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fab fa-r-project"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">R 10Min<sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Movie 10Min</div>
       </a>
-  
+
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-  
+
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/dashboard">
+        <a class="nav-link" href="dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Thống kê</span></a>
       </li>
-  
+
       <!-- Divider -->
       <hr class="sidebar-divider">
-  
+
       <!-- Heading -->
       <div class="sidebar-heading">
         PHIM
       </div>
-  
+
       <!-- Nav Item - Pages Movies Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true"
@@ -69,37 +68,59 @@
         </a>
         <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/movie-add">Thêm phim mới</a>
-            <a class="collapse-item" href="/movie-list">Danh sách phim</a>
+            <a class="collapse-item" href="movie-add">Thêm phim mới</a>
+            <a class="collapse-item" href="movie-list">Danh sách phim</a>
           </div>
-       
+
         </div>
       </li>
-  
-       <!-- Nav Item - Pages Category Menu -->
-       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="true"
-          aria-controls="collapsePages">
+
+      <!-- Nav Item - Pages Category Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+          aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Quản lý thể loại</span>
         </a>
         <div id="collapseCategories" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/cate-add">Thêm loại phim</a>
-            <a class="collapse-item" href="/cate-list">Danh sách loại phim</a>
+            <a class="collapse-item" href="cate-add">Thêm loại phim</a>
+            <a class="collapse-item" href="cate-list">Danh sách loại phim</a>
           </div>
-       
+
         </div>
       </li>
-  
+
+      <hr class="sidebar-divider">
+
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        NGƯỜI DÙNG
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Người dùng</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="user_list">Danh sách</a>
+          </div>
+
+        </div>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-  
+
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
-  
+
     </ul>
 
     <!-- End of Sidebar -->
@@ -388,79 +409,85 @@
 
                         <% data.forEach(function(item){%>
 
-                        <tr>
-                          <td># <%- item.position %></th>
-                          <td><%- item.link %></th>
-                          <td><%- new Date(item.create_at).toISOString().slice(0,10) %></th>
-                          <td>
-                            <% if (item.delete_at) { %>
-                            <p style="color: tomato;">Hidden</p>
+                          <tr>
+                            <td># <%- item.position %>
+                                </th>
+                            <td>
+                              <%- item.link %>
+                                </th>
+                            <td>
+                              <%- new Date(item.create_at).toISOString().slice(0,10) %>
+                                </th>
+                            <td>
+                              <% if (item.delete_at) { %>
+                                <p style="color: tomato;">Hidden</p>
 
-                            <% }else{ %>
-                            <p style="color: #2ee2af;">Show</p>
-                            <%}%>
+                                <% }else{ %>
+                                  <p style="color: #2ee2af;">Show</p>
+                                  <%}%>
 
                             </td>
                             <td>
 
-                            <div class="main__table-btns">
-                              <!-- <a href="#"
+                              <div class="main__table-btns">
+                                <!-- <a href="#"
                                 class="main__table-btn main__table-btn--banned open-modal">
                                 <i class="fab fa-angellist"></i>
                               </a> -->
-                              
-                            <% if (item.delete_at) { %>
-                            <a href="/v4/video/show/<%- item._id %>"
-                              class="main__table-btn main__table-btn--banned open-modal">
-                              <i class="far fa-eye"></i>
-                            </a>
-                            <% }else{ %>
-                            <a href="/v5/video/delete/id/<%- item._id %>" class="main__table-btn main__table-btn--view">
-                              <i class="fas fa-eye-slash"></i>
-                            </a>
-                            <%}%>
 
-                              <!-- <a href="" data-toggle="modal" data-target="#exampleModal"  class="main__table-btn main__table-btn--edit">
+                                <% if (item.delete_at) { %>
+                                  <a href="/v4/video/show/<%- item._id %>"
+                                    class="main__table-btn main__table-btn--banned open-modal">
+                                    <i class="far fa-eye"></i>
+                                  </a>
+                                  <% }else{ %>
+                                    <a href="/v5/video/delete/id/<%- item._id %>"
+                                      class="main__table-btn main__table-btn--view">
+                                      <i class="fas fa-eye-slash"></i>
+                                    </a>
+                                    <%}%>
+
+                                      <!-- <a href="" data-toggle="modal" data-target="#exampleModal"  class="main__table-btn main__table-btn--edit">
                                 <i class="fas fa-eye-dropper"></i>
                               </a> -->
 
-                              <a href="/v5/video/removeForever/<%- item._id %>" class="main__table-btn
+                                      <a href="/v5/video/removeForever/<%- item._id %>" class="main__table-btn
                             main__table-btn--delete open-modal">
-                            <i class="  fas fa-trash"></i>
-                            </a>
+                                        <i class="  fas fa-trash"></i>
+                                      </a>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <% }); %>
+
+
+
+                      </tbody>
+                    </table>
                   </div>
-                  </td>
-                  </tr>
-
-                  <% }); %>
-
-
-
-                  </tbody>
-                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- /.container-fluid -->
+
       </div>
-      <!-- /.container-fluid -->
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 
     </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Your Website 2020</span>
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
-
-  </div>
-  <!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->

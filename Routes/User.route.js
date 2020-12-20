@@ -11,4 +11,5 @@ module.exports = function (app) {
   app
     .route("/v3/statictical/count/:movie_id")
     .get(User._countComment_eval_follow_byMovieId);
+  
 };

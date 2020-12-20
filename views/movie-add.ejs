@@ -29,75 +29,97 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">R 10Min<sup>2</sup></div>
-        </a>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-    
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/dashboard">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-        </li>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-    
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          PHIM
-        </div>
-    
-        <!-- Nav Item - Pages Movies Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Quản lý phim</span>
-          </a>
-          <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/movie-add">Thêm phim mới</a>
-              <a class="collapse-item" href="/movie-list">Danh sách phim</a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+              <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fab fa-r-project"></i>
+              </div>
+              <div class="sidebar-brand-text mx-3">Movie 10Min</div>
+            </a>
+      
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+      
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+              <a class="nav-link" href="dashboard">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Thống kê</span></a>
+            </li>
+      
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+      
+            <!-- Heading -->
+            <div class="sidebar-heading">
+              PHIM
             </div>
-         
-          </div>
-        </li>
-    
-         <!-- Nav Item - Pages Category Menu -->
-         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Quản lý thể loại</span>
-          </a>
-          <div id="collapseCategories" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/cate-add">Thêm loại phim</a>
-              <a class="collapse-item" href="/cate-list">Danh sách loại phim</a>
+      
+            <!-- Nav Item - Pages Movies Menu -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true"
+                aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Quản lý phim</span>
+              </a>
+              <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href="movie-add">Thêm phim mới</a>
+                  <a class="collapse-item" href="movie-list">Danh sách phim</a>
+                </div>
+      
+              </div>
+            </li>
+      
+            <!-- Nav Item - Pages Category Menu -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Quản lý thể loại</span>
+              </a>
+              <div id="collapseCategories" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href="cate-add">Thêm loại phim</a>
+                  <a class="collapse-item" href="cate-list">Danh sách loại phim</a>
+                </div>
+      
+              </div>
+            </li>
+      
+            <hr class="sidebar-divider">
+      
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+              NGƯỜI DÙNG
             </div>
-         
-          </div>
-        </li>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-    
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-    
-      </ul>
+      
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Người dùng</span>
+              </a>
+              <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href="user_list">Danh sách</a>
+                </div>
+      
+              </div>
+            </li>
+      
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+      
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+              <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+      
+          </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -422,8 +444,10 @@
                                                             id="inlineFormCustomSelect" name="category_id">
                                                             <option aria-readonly="true">Thể loại</option>
                                                             <% data.forEach(function(cats){ %>
-                                                            <option value="<%-cats._id%>"><%-cats.name%></option>
-                                                            <% }) %>
+                                                                <option value="<%-cats._id%>">
+                                                                    <%-cats.name%>
+                                                                </option>
+                                                                <% }) %>
                                                         </select>
                                                     </div>
 

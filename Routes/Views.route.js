@@ -11,4 +11,6 @@ module.exports = function (app) {
   app.route("/movie-update").get(Movie._showMovieUpdate);
   app.route("/v7/movie/remove/:_id").get(Movie._removeMovie);
   app.route("/v7/movie/enable/:_id").get(Movie._enableMovie);
+
+  app.route("/user_list").get(Views._UserList)
 };

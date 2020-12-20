@@ -29,76 +29,99 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">R 10Min<sup>2</sup></div>
-        </a>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-    
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/dashboard">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-        </li>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-    
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          PHIM
-        </div>
-    
-        <!-- Nav Item - Pages Movies Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Quản lý phim</span>
-          </a>
-          <div id="collapseMovies" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/movie-add">Thêm phim mới</a>
-              <a class="collapse-item" href="/movie-list">Danh sách phim</a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fab fa-r-project"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Movie 10Min</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Thống kê</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                PHIM
             </div>
-         
-          </div>
-        </li>
-    
-         <!-- Nav Item - Pages Category Menu -->
-         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Quản lý thể loại</span>
-          </a>
-          <div id="collapseCategories" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/cate-add">Thêm loại phim</a>
-              <a class="collapse-item" href="/cate-list">Danh sách loại phim</a>
+
+            <!-- Nav Item - Pages Movies Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovies"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Quản lý phim</span>
+                </a>
+                <div id="collapseMovies" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="movie-add">Thêm phim mới</a>
+                        <a class="collapse-item" href="movie-list">Danh sách phim</a>
+                    </div>
+
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Category Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Quản lý thể loại</span>
+                </a>
+                <div id="collapseCategories" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="cate-add">Thêm loại phim</a>
+                        <a class="collapse-item" href="cate-list">Danh sách loại phim</a>
+                    </div>
+
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                NGƯỜI DÙNG
             </div>
-         
-          </div>
-        </li>
-    
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-    
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-    
-      </ul>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Người dùng</span>
+                </a>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="user_list">Danh sách</a>
+                    </div>
+
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -330,163 +353,175 @@
 
 
                             <% if (movie) { %>
-                            <div class="card-body">
-                                <div class="col-lg-12 mb-4">
-                                    <form action="/v4/movie/update/:_id/:category_id" method="POST">
-                                        <input hidden name="_id" value="<%= movie[0]._id %>" >
-                                        <div class="row">
-                                            <!-- Form Cover -->
-                                            <div class="col-12 col-md-3 form_cover">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form__img rounded">
-                                                            <label for="display_cover_url"></label>
-                                                            <img class="img-fluid " alt="..." id="display_cover_url">
+                                <div class="card-body">
+                                    <div class="col-lg-12 mb-4">
+                                        <form action="/v4/movie/update/:_id/:category_id" method="POST">
+                                            <input hidden name="_id" value="<%= movie[0]._id %>">
+                                            <div class="row">
+                                                <!-- Form Cover -->
+                                                <div class="col-12 col-md-3 form_cover">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form__img rounded">
+                                                                <label for="display_cover_url"></label>
+                                                                <img class="img-fluid " alt="..."
+                                                                    id="display_cover_url">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- Form Content -->
+                                                <!-- Form Content -->
 
-                                            <div class="col-12 col-md-9 form_content">
+                                                <div class="col-12 col-md-9 form_content">
 
-                                                <div class="col-12">
-                                                    <input type="text" class="form__input" placeholder="Tên phim"
-                                                        name="name" value="<%= movie[0].name %>">
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <textarea id="introduction" class="form__textarea" name="introduction"
-                                                        placeholder="Miêu tả"><%= movie[0].introduction %></textarea>
-                                                </div>
-
-                                                <div class="row col-12 p-0 m-0 ">
-                                                    <div class="col-12 col-sm-6 col-lg-4">
-                                                        <select class="custom-select mr-sm-2 form__input"
-                                                            id="inlineFormCustomSelect" name="years">
-                                                            <option disabled>Năm phát hành</option>
-                                                            <option selected hidden><%= movie[0].years %></option>
-                                                            <option value="2020">2020</option>
-                                                            <option value="2019">2019</option>
-                                                            <option value="2018">2018</option>
-                                                            <option value="2017">2017</option>
-                                                            <option value="Trước 2017">Trước 2017</option>
-                                                        </select>
+                                                    <div class="col-12">
+                                                        <input type="text" class="form__input" placeholder="Tên phim"
+                                                            name="name" value="<%= movie[0].name %>">
                                                     </div>
 
-                                                    <div class="col-12 col-sm-6 col-lg-4">
+                                                    <div class="col-12">
+                                                        <textarea id="introduction" class="form__textarea"
+                                                            name="introduction"
+                                                            placeholder="Miêu tả"><%= movie[0].introduction %></textarea>
+                                                    </div>
+
+                                                    <div class="row col-12 p-0 m-0 ">
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <select class="custom-select mr-sm-2 form__input"
+                                                                id="inlineFormCustomSelect" name="years">
+                                                                <option disabled>Năm phát hành</option>
+                                                                <option selected hidden>
+                                                                    <%= movie[0].years %>
+                                                                </option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2019">2019</option>
+                                                                <option value="2018">2018</option>
+                                                                <option value="2017">2017</option>
+                                                                <option value="Trước 2017">Trước 2017</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <input type="text" class="form__input"
+                                                                placeholder="Nhà sản xuất" name="directer"
+                                                                value="<%= movie[0].directer %>">
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <input type="text" class="form__input"
+                                                                placeholder="Thời lượng (phút)"
+                                                                value="<%= movie[0].duration %>" name="duration">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row col-12 p-0 m-0">
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <select class="custom-select mr-sm-2 form__input"
+                                                                id="inlineFormCustomSelect" name="language">
+                                                                <option disabled>Phụ đề</option>
+                                                                <option value="<%= movie[0].language %>" selected
+                                                                    hidden>
+                                                                    <%= movie[0].language %>
+                                                                </option>
+                                                                <option value="Việt Sub">Việt Sub</option>
+                                                                <option value="Thuyết Minh">Thuyết Minh</option>
+                                                                <option value="No Sub">No Sub</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <label class="mr-sm-2 sr-only"
+                                                                for="inlineFormCustomSelect">Preference</label>
+                                                            <select class="custom-select mr-sm-2 form__input"
+                                                                id="inlineFormCustomSelect" name="country">
+                                                                <option disabled>Chọn quốc gia</option>
+                                                                <option value="<%= movie[0].country %>" selected hidden>
+                                                                    <%= movie[0].country %>
+                                                                </option>
+                                                                <option value="Việt Nam">Việt Nam</option>
+                                                                <option value="Mỹ">Mỹ</option>
+                                                                <option value="Anh">Anh</option>
+                                                                <option value="Nhật">Nhật</option>
+                                                                <option value="Trung Quốc">Trung Quốc</option>
+                                                                <option value="Mỹ">Hàn Quốc</option>
+                                                                <option value="Khác">Khác</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-12 col-sm-6 col-lg-4">
+                                                            <label class="mr-sm-2 sr-only"
+                                                                for="inlineFormCustomSelect2">Preference</label>
+                                                            <select class="custom-select mr-sm-2 form__input"
+                                                                id="inlineFormCustomSelect" name="category_id">
+                                                                <option selected disabled hidden>Chọn loại phim</option>
+                                                                <% categories.forEach(function(cats){ %>
+                                                                    <option value="<%-cats._id%>">
+                                                                        <%-cats.name%>
+                                                                    </option>
+                                                                    <% }) %>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row col-12 p-0 m-0">
+                                                        <div class="col-8 col-sm-8 col-lg-8 ">
+                                                            <label class="mr-sm-2 sr-only" for="cover_url">Link
+                                                                banner:</label>
+                                                            <input type="text" class="form__input"
+                                                                placeholder="Link banner" name="cover_img"
+                                                                id="cover_url" value="<%= movie[0].cover_img %>">
+                                                        </div>
+                                                        <div class="col-4 col-sm-4 col-lg-4">
+                                                            <input type="text" class="form__input"
+                                                                placeholder="Điểm IMDb" value="<%= movie[0].score %>"
+                                                                name="score">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- Video and trailer  -->
+                                            <div class="row">
+
+                                                <div class="col-12 col-sm-6 col-lg-3">
+                                                    <input type="text" class="form__input" placeholder="Trailer"
+                                                        name="trailer" value="<%= movie[0].trailer %>">
+                                                </div>
+
+                                                <% if(video){ %>
+                                                    <div class="col-12 col-sm-6 col-lg-3">
+                                                        <input type="text" class="form__input" placeholder="Tựa đề phim"
+                                                            value="<%= video[0].title %>" name="title">
+                                                    </div>
+
+                                                    <div class="col-12 col-sm-6 col-lg-3">
                                                         <input type="text" class="form__input"
-                                                            placeholder="Nhà sản xuất" name="directer"
-                                                            value="<%= movie[0].directer %>">
+                                                            value="<%= video[0].type_source %>" name="type_source"
+                                                            placeholder="Nguồn">
                                                     </div>
 
-                                                    <div class="col-12 col-sm-6 col-lg-4">
+                                                    <div class="col-12 col-sm-6 col-lg-3">
                                                         <input type="text" class="form__input"
-                                                            placeholder="Thời lượng (phút)"
-                                                            value="<%= movie[0].duration %>" name="duration">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row col-12 p-0 m-0">
-                                                    <div class="col-12 col-sm-6 col-lg-4">
-                                                        <select class="custom-select mr-sm-2 form__input"
-                                                            id="inlineFormCustomSelect" name="language">
-                                                            <option disabled>Phụ đề</option>
-                                                            <option value="<%= movie[0].language %>" selected hidden><%= movie[0].language %>
-                                                            </option>
-                                                            <option value="Việt Sub">Việt Sub</option>
-                                                            <option value="Thuyết Minh">Thuyết Minh</option>
-                                                            <option value="No Sub">No Sub</option>
-                                                        </select>
+                                                            placeholder="Link phim hoặc mã video Youtube"
+                                                            value="<%= video[0].link %>" name="link">
                                                     </div>
 
-
-                                                    <div class="col-12 col-sm-6 col-lg-4">
-                                                        <label class="mr-sm-2 sr-only"
-                                                            for="inlineFormCustomSelect">Preference</label>
-                                                        <select class="custom-select mr-sm-2 form__input"
-                                                            id="inlineFormCustomSelect" name="country">
-                                                            <option disabled>Chọn quốc gia</option>
-                                                            <option value="<%= movie[0].country %>" selected hidden><%= movie[0].country %>
-                                                            </option>
-                                                            <option value="Việt Nam">Việt Nam</option>
-                                                            <option value="Mỹ">Mỹ</option>
-                                                            <option value="Anh">Anh</option>
-                                                            <option value="Nhật">Nhật</option>
-                                                            <option value="Trung Quốc">Trung Quốc</option>
-                                                            <option value="Mỹ">Hàn Quốc</option>
-                                                            <option value="Khác">Khác</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-12 col-sm-6 col-lg-4">
-                                                        <label class="mr-sm-2 sr-only"
-                                                            for="inlineFormCustomSelect2">Preference</label>
-                                                        <select class="custom-select mr-sm-2 form__input"
-                                                            id="inlineFormCustomSelect" name="category_id">
-                                                            <option selected disabled hidden>Chọn loại phim</option>
-                                                            <% categories.forEach(function(cats){ %>
-                                                            <option value="<%-cats._id%>"><%-cats.name%></option>
-                                                            <% }) %>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="row col-12 p-0 m-0">
-                                                    <div class="col-8 col-sm-8 col-lg-8 ">
-                                                        <label class="mr-sm-2 sr-only" for="cover_url">Link banner:</label>
-                                                        <input type="text" class="form__input" placeholder="Link banner"
-                                                            name="cover_img" id="cover_url"
-                                                            value="<%= movie[0].cover_img %>">
-                                                    </div>
-                                                    <div class="col-4 col-sm-4 col-lg-4">
-                                                        <input type="text" class="form__input"
-                                                            placeholder="Điểm IMDb"
-                                                            value="<%= movie[0].score %>" name="score">
-                                                    </div>
-                                                </div>
-
+                                                    <% } %>
                                             </div>
 
-                                        </div>
-                                        <!-- Video and trailer  -->
-                                        <div class="row">
-                                            
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <input type="text" class="form__input" placeholder="Trailer"
-                                                    name="trailer" value="<%= movie[0].trailer %>">
+                                            <!-- Form Button -->
+                                            <div class="col-12 p-0 m-0">
+                                                <button type="submit" class="form__btn">Xác nhận</button>
                                             </div>
+                                        </form>
 
-                                            <% if(video){ %>
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <input type="text" class="form__input" placeholder="Tựa đề phim"
-                                                    value="<%= video[0].title %>" name="title">
-                                            </div>
-
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <input type="text" class="form__input" value="<%= video[0].type_source %>" name="type_source"
-                                                    placeholder="Nguồn">
-                                            </div>
-
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <input type="text" class="form__input"
-                                                    placeholder="Link phim hoặc mã video Youtube" value="<%= video[0].link %>" name="link">
-                                            </div>
-
-                                            <% } %>
-                                        </div>
-
-                                        <!-- Form Button -->
-                                        <div class="col-12 p-0 m-0">
-                                            <button type="submit" class="form__btn">Xác nhận</button>
-                                        </div>
-                                    </form>
-
+                                    </div>
                                 </div>
-                            </div>
 
-                            <% } %>
+                                <% } %>
                         </div>
 
                     </div>
