@@ -1,8 +1,7 @@
-const { findOne } = require("../Models/Views");
-const views = require("../Models/Views");
+const Views = require("../Models/Views");
 
 exports.countViewsByMovieId = async (req, res) => {
-  await views.findOne({ movie_id: req.params.movie_id }, function (err, data) {
+  await Views.findOne({ movie_id: req.params.movie_id }, function (err, data) {
     if (err) {
       res.json({
         status: -1,
@@ -47,7 +46,7 @@ exports.countViewsByMovieId = async (req, res) => {
 };
 
 exports.getViewsByMovieId = async (req, res) => {
-    await views.findOne({movie_id: req.params.movie_id}, function(err, data){
+    await Views.findOne({movie_id: req.params.movie_id}, function(err, data){
         if(err){
             res.json({
                 status: -1,
