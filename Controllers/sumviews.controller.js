@@ -1,7 +1,7 @@
-const Views = require("../Models/CountViews");
+const CountViews = require("../Models/CountViews");
 
 exports.countViewsByMovieId = async (req, res) => {
-  await Views.findOne({ movie_id: req.params.movie_id }, function (err, data) {
+  await CountViews.findOne({ movie_id: req.params.movie_id }, function (err, data) {
     if (err) {
       res.json({
         status: -1,
@@ -27,7 +27,7 @@ exports.countViewsByMovieId = async (req, res) => {
             }
         })
       }else{
-        views.updateOne({_id: data._id}, {count: data.count + 1}, function(err){
+        CountViews.updateOne({_id: data._id}, {count: data.count + 1}, function(err){
             if(err){
                 res.json({
                     status: -1,
@@ -46,7 +46,7 @@ exports.countViewsByMovieId = async (req, res) => {
 };
 
 exports.getViewsByMovieId = async (req, res) => {
-    await Views.findOne({movie_id: req.params.movie_id}, function(err, data){
+    await CountViews.findOne({movie_id: req.params.movie_id}, function(err, data){
         if(err){
             res.json({
                 status: -1,
