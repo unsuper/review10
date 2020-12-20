@@ -27,7 +27,7 @@ exports.countViewsByMovieId = async (req, res) => {
             }
         })
       }else{
-        CountViews.updateOne({_id: data._id}, {count: data.count + 1}, function(err){
+        CountViews.updateOne({_id: data[0]._id}, {count: data[0].count + 1}, function(err){
             if(err){
                 res.json({
                     status: -1,
