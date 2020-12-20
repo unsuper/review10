@@ -8,7 +8,7 @@ const moment = require("moment");
 const Admin = require("../Contants/firebase_config");
 const { response } = require("express");
 const { topPic } = require("../Contants/contants");
-const CountView = require("../Models/CountViews")
+const CountView = require("../Models/CountViews");
 // add movie by body
 exports._showMovieAdd = async (req, res) => {
   await Category.find({ delete_at: null }, function (err, cate) {
@@ -232,21 +232,11 @@ exports._getMovieByID = (req, res) => {
 
 // get detail film by movie_id
 exports._getMovie_detail_byID = async (req, res) => {
-
-  let countViews = await CountView.findOne({movie_id: req.params.movie_id}, function(err, result){
-    if(err){
-      res.json({
-        status: -1,
-        message: err
-      })
-    }else{
-      if(result.length === 0){
-        return 0
-      }else{
-        return result;
-      }
-    }
-  })
+  let getCount = await CountView.findOne({ movie_id: req.params.movie_id },"count").exec();
+  let countViews = 0;
+  if(getCount){
+    countViews = getCount.count
+  }
 
   await Category_Movie.find({ movie_id: req.params.movie_id })
     .populate("category_id")
@@ -280,7 +270,7 @@ exports._getMovie_detail_byID = async (req, res) => {
                   res.json({
                     result: true,
                     message: "result ok",
-                    views: countViews.count,
+                    views: countViews,
                     category: data.map((element, index) => {
                       return {
                         index: index,
