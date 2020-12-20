@@ -1,4 +1,4 @@
-const Views = require("../Models/Views");
+const Views = require("../Models/CountViews");
 
 exports.countViewsByMovieId = async (req, res) => {
   await Views.findOne({ movie_id: req.params.movie_id }, function (err, data) {
