@@ -2,8 +2,21 @@ const Movie = require("../Models/Movie");
 const Evaluate = require("../Models/Evaluate");
 const User = require("../Models/User");
 const Chat = require("../Models/chat");
+const Video = require("../Models/Video");
+const CountViews = require("../Models/CountViews");
+const Category = require("../Models/Category");
 
 exports._ViewFilm = async function (req, res) {
+  let countVideo = await Video.countDocuments({}, function (err, data) {
+    if (err) {
+      res.json({
+        message: err,
+      });
+    } else {
+      return data;
+    }
+  });
+
   let reviewData = await Evaluate.find({}, function (err, data) {
     if (err) {
       return [];
@@ -21,12 +34,32 @@ exports._ViewFilm = async function (req, res) {
   });
 
   let array = [];
-
+  let ratingData = [];
   await reviewData.forEach((value, index) => {
     if (index < 5) {
       let newId1 = value.movie_id.toString();
       movieData.forEach((value1, index1) => {
         let newId2 = value1._id.toString();
+
+        Evaluate.find({ movie_id: value1._id }, function (err, data) {
+          if (err) {
+            res.json({
+              result: false,
+              message: "get average evaluate  fail : " + err.message,
+              position: -999,
+            });
+          } else {
+            let number = 0;
+            data.map((e, i) => {
+              number += data[i].score;
+            });
+            ratingData.push({
+              movie_name: value1.name,
+              ratings: number / data.length,
+            });
+          }
+        });
+
         if (newId1 === newId2) {
           let newData = {
             _id: index,
@@ -37,6 +70,7 @@ exports._ViewFilm = async function (req, res) {
           };
           array.push(newData);
         }
+
       });
     }
   });
@@ -49,13 +83,37 @@ exports._ViewFilm = async function (req, res) {
     }
   });
 
-  // if(array.length >= 4) {
-  //     res.render("Dashboard", {data: array})
-  // }
+  let countCategories = await Category.countDocuments({}, function (err, data) {
+    if (err) {
+      res.json({
+        message: err,
+      });
+    } else {
+      return data;
+    }
+  });
 
-  res.render("Dashboard", {
-    data: array,
-    sumMovie: countMovies
+  let sumViews = 0;
+  await CountViews.find({}, function (err, data) {
+    if (err) {
+      res.json({
+        message: err,
+      });
+    } else {
+      data.map((val, ind) => {
+        sumViews = sumViews + val.count;
+        if (ind === data.length - 1) {
+          res.render("Dashboard", {
+            data: array,
+            sumMovie: countMovies,
+            countVideo: countVideo,
+            sumViews: sumViews,
+            countCate: countCategories,
+          });
+          //console.log(ratingData);
+        }
+      });
+    }
   });
 };
 
